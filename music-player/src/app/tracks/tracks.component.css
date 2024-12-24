@@ -1,0 +1,77 @@
+
+.favorites {
+  justify-content: center !important;
+  font-size: 20px !important;
+  background-color: #8576a9 !important;
+  max-width: 80%;
+  color: white !important;
+  position: sticky;
+  margin-top: 10;
+  margin: auto;
+  z-index: 1;
+}
+
+.fav-button {
+  background-color: #7055ae;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mat-list {
+  width: 80% !important;
+  margin: auto !important;
+  border-top: 1px solid #564e4e;
+}
+
+.mat-list-icon {
+  width: 54px !important;
+  height: 40px !important;
+  border-radius: 10px !important;
+}
+
+h3,
+h2,
+h7,
+mat-icon {
+  color: white !important;
+}
+
+.track-list {
+  max-height: 450px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.track-name {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bolder;
+}
+
+.artist-name {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+}
+
+.favorite-icon {
+  color: #891b1b !important;
+  font-size: 35px;
+}
+
+.favorite-border-icon {
+  color: white;
+  font-size: 35px;
+}
+
+@media screen and (max-width: 807px) {
+  .track-list {
+    max-height: 300px;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  .track-list {
+    max-height: 80%;
+  }
+}

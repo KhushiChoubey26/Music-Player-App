@@ -1,0 +1,53 @@
+<mat-toolbar class="main-toolbar" routerLink="/">
+  <span>Music Player</span>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<div class="progress-container">
+  <mat-toolbar class="progress-bar">
+    <mat-toolbar-row *ngIf="tracks.indexOf(this.state.activeTrack) != -1" class="progress-artist-container">
+      <div>{{state.activeTrack.name}} By {{state.activeTrack.artist}}</div>
+      <div> {{ getFormattedTime(state.currentTime) }} / {{ getFormattedTime(state.duration) }}</div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="progress-bar">
+      <mat-slider min="0" [max]="state.duration" step="1" [value]="state.currentTime" (input)="goToTime($event)">
+      </mat-slider>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="progress-container-action-bar">
+      <div>
+        <button mat-button
+          [disabled]="tracks.indexOf(this.state.activeTrack) === 0 || tracks.indexOf(this.state.activeTrack) === -1"
+          (click)="previous()" matTooltip="Previous Track">
+          <mat-icon mat-list-icon>skip_previous</mat-icon>
+        </button>
+        <button mat-button (click)="resume()" *ngIf="!state?.isPlaying" matTooltip="Play"
+          [disabled]="tracks.indexOf(this.state.activeTrack) === -1">
+          <mat-icon mat-list-icon>play_arrow</mat-icon>
+        </button>
+        <button mat-button (click)="pause()" *ngIf="state?.isPlaying" matTooltip="Pause"
+          [disabled]="tracks.indexOf(this.state.activeTrack) === -1">
+          <mat-icon mat-list-icon>pause</mat-icon>
+        </button>
+        <button mat-button
+          [disabled]="this.tracks.indexOf(this.state.activeTrack) === this.tracks.length - 1 || tracks.indexOf(this.state.activeTrack) === -1"
+          (click)="next()" matTooltip="Next Track" [disabled]="tracks.indexOf(this.state.activeTrack) === -1">
+          <mat-icon mat-list-icon>skip_next</mat-icon>
+        </button>
+      </div>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu" matTooltip="Playback Speed"
+          [disabled]="tracks.indexOf(this.state.activeTrack) === -1">
+          <mat-icon mat-list-icon>play_circle_filled</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let speed of playbackSpeeds" (click)="changePlaybackSpeed(speed)">{{speed}}x</button>
+        </mat-menu>
+        <button mat-button (click)="musicService.playNewFile(state.activeTrack)" matTooltip="Replay Track"
+          [disabled]="tracks.indexOf(this.state.activeTrack) === -1">
+          <mat-icon mat-list-icon>replay</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>

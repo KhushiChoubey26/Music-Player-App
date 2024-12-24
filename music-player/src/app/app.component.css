@@ -1,0 +1,72 @@
+.main-toolbar {
+  justify-content: center !important;
+  font-size: 40px !important;
+  background-color: #8576a9 !important;
+  font-family: "Victor Mono", monospace !important;
+  color: white !important;
+  top: 0;
+  z-index: 1;
+}
+
+.progress-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 20px;
+  justify-content: center !important;
+}
+
+.progress-bar {
+  width: 100%;
+  justify-content: center !important;
+  font-family: "Victor Mono", monospace;
+  height: 1px;
+  background-color: #8576a9;
+}
+
+.mat-slider-horizontal {
+  min-width: 60% !important;
+}
+
+.progress-artist-container {
+  font-family: "Victor Mono", monospace;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 15px;
+  width: 60%;
+  margin: auto;
+}
+
+.progress-container-action-bar {
+  display: flex;
+  justify-content: space-between;
+  width: 63%;
+  margin: auto;
+  color: white;
+  margin: auto;
+}
+
+@media screen and (max-width: 807px) {
+  .progress-artist-container {
+    max-height: 300px;
+  }
+
+  .progress-container {
+    height: 150px;
+    margin-bottom: 0px;
+  }
+
+  .progress-artist-container {
+    flex-direction: column;
+  }
+
+  .progress-container-action-bar {
+    flex-direction: column;
+  }
+
+  .progress-bar {
+    padding: 8px;
+  }
+}

@@ -1,0 +1,22 @@
+<mat-toolbar class="favorites">
+    <button class="fav-button" mat-button routerLink="/favorites">Favorites</button>
+</mat-toolbar>
+
+<mat-list class="track-list">
+    <mat-list-item *ngFor="let file of tracks; let i = index;">
+        <img mat-list-icon [src]="file.img" width="57px" height="52px">
+        <h2 mat-line matListItemTitle class="track-name" (click)="playTrack(file)">{{ file.name }}</h2>
+        <p mat-line class="artist-name" (click)="playTrack(file)">by {{file.artist }}</p>
+        <mat-icon color="primary" *ngIf="tracks.indexOf(this.state.activeTrack) === i" style="font-size: 35px;">
+            headphones</mat-icon>
+        <button mat-button matTooltip="Remove from favorite Track" *ngIf="file.isFavorite == true"
+            (click)="handleFavorites(false,i)">
+            <mat-icon class="favorite-icon">favorite</mat-icon>
+        </button>
+        <button mat-button matTooltip="Add to favorite Tracks" *ngIf="file.isFavorite == false"
+            (click)="handleFavorites(true,i)">
+            <mat-icon class="favorite-border-icon">favorite_border</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+</mat-list>
